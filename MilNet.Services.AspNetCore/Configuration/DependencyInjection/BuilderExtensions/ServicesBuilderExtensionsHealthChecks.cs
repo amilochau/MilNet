@@ -1,4 +1,5 @@
 ﻿using MilNet.Services.AspNetCore.Configuration;
+using MilNet.Services.Models;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -12,8 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             builder.Services.AddHealthChecks()
                 .AddDiskStorageHealthCheck(setup => setup.AddDrive(System.IO.Path.GetPathRoot(Environment.CurrentDirectory), 1024), name: "Disk storage")
-                .AddPrivateMemoryHealthCheck(1024 * 1024 * 1024, name: "Private memory")
-                .AddIdentityServer(new Uri(builder.Options.IdentityUrl), name: "Identity server");
+                .AddPrivateMemoryHealthCheck(1024 * 1024 * 1024, name: "Private memory");
 
             return builder;
         }

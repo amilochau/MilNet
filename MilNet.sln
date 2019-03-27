@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilNet.Core", "MilNet.Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilNet.Services.AspNetCore", "MilNet.Services.AspNetCore\MilNet.Services.AspNetCore.csproj", "{AE4C39CA-8069-4517-9AD3-25452ADCF7D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilNet.Services.Models", "MilNet.Services.Models\MilNet.Services.Models.csproj", "{D3CB783C-B3C4-44F7-A1CD-0FF571573720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilNet.Services.Models", "MilNet.Services.Models\MilNet.Services.Models.csproj", "{D3CB783C-B3C4-44F7-A1CD-0FF571573720}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

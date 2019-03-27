@@ -1,4 +1,4 @@
-﻿namespace MilNet.Services.AspNetCore.Configuration
+﻿namespace MilNet.Services.Models
 {
     /// <summary>Application release options</summary>
     /// <remarks>These settings are typically set up in a Release pipeline</remarks>

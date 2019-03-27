@@ -1,4 +1,5 @@
 ﻿using MilNet.Services.AspNetCore.Configuration;
+using MilNet.Services.Models;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

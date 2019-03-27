@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MilNet.Services.AspNetCore.Configuration;
+using MilNet.Services.Models;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -22,10 +23,9 @@ namespace Microsoft.Extensions.DependencyInjection
             var builder = services.AddMilNetServicesBuilder<TOptions>();
             
             builder
-                .AddRequiredPlatformServices<TOptions>()
-                .AddCoreServices<TOptions>()
+                .AddRequiredPlatformServices()
+                .AddCoreServices()
                 .AddCorsServices()
-                .AddBusinessServices<TOptions>()
                 .AddDocumentationServices()
                 .AddCookiePolicy()
                 .AddIISServices()
