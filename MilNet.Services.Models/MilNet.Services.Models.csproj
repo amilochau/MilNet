@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.0;net45;netcoreapp1.0</TargetFrameworks>
+    <Authors>Antoine Milochau</Authors>
+    <Version>2.2.1.2</Version>
+    <Copyright>Copyright © Antoine Milochau 2018 - 2019</Copyright>
+    <PackageTags>milnet services aspnet core dotnet framework standard identity</PackageTags>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Description>Models to use Identity API on MilNet Services</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Emails\" />
+  </ItemGroup>
+
+</Project>
