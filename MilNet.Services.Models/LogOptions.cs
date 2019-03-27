@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MilNet.Services.AspNetCore.Configuration
+namespace MilNet.Services.Models
 {
     public class LogOptions
     {

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MilNet.Core;
 using MilNet.Services.AspNetCore.Configuration;
+using MilNet.Services.Models;
 
 namespace Microsoft.AspNetCore.Builder
 {

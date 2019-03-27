@@ -1,4 +1,5 @@
 ﻿using MilNet.Services.AspNetCore.Configuration;
+using MilNet.Services.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Collections.Generic;
 

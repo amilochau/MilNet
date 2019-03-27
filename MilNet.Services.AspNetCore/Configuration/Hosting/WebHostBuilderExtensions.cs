@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MilNet.Services.AspNetCore.Configuration;
+using MilNet.Services.Models;
 using Serilog;
 using Serilog.Exceptions;
 using Serilog.Sinks.Elasticsearch;

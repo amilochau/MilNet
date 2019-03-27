@@ -49,16 +49,14 @@ If you want to propose code source changes, please follow the steps below.
    ```C#
    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
        WebHost.CreateDefaultBuilder(args)
-           .ConfigureSsoServices()
+           .ConfigureMilNetServices()
            .UseStartup<Startup>();
    ```
 3. Configure your `IServiceCollection` with the `AddMilNetServices` extension, as in the `Startup.cs` file:
    ```C#
    public void ConfigureServices(IServiceCollection services)
    {
-       services.AddMilNetServices(configuration.GetSection("Services")
-           .AddDbContextWithSqlServer<ApplicationDbContext>(configuration.GetConnectionString("DefaultConnection"))
-           .AddAuthentication();
+       services.AddMilNetServices(configuration.GetSection("Services");
        
        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
    }
@@ -69,7 +67,6 @@ If you want to propose code source changes, please follow the steps below.
    {
        app.UseMilNetServices();
        
-       app.UseAuthentication();
        app.UseMvcWithDefaultRoute();
    }
    ```
@@ -86,23 +83,34 @@ If you want to propose code source changes, please follow the steps below.
      },
      "AllowedHosts": "*",
      "Services": {
-       "IdentityUrl": "http://myidentityserver.com",
-       "IdentitySecret": "IdentityServerSecret_ToDefineWithSecretManager",
-       "ApplicationName": "MyAppName_RegisteredByIdentityServer",
-       "ApplicationUrl": "http://myappsite.com",
+       "ApplicationName": "MyAppName",
+			 "Log": {
+			     "ElasticSearchUrl": "http://localhost:9200"
+			 },
+       "Contact": {
+         "Business": {
+				   "Email": "business-support@mysite.com",
+           "Place": "Paris, France",
+           "Url": "http://mysite.com/business-support",
+					 "Users": [
+					     {
+					         "FirstName": "Antoine",
+							     "LastName": "Milochau"
+					         "Email": "antoine.milochau@mysite.com",
+							     "Place": "Paris, France"
+							 }
+					 ]
+         },
+         "Technical": {
+				   "Email": "technical-support@mysite.com",
+           "Place": "Paris, France",
+           "Url": "http://mysite.com/technical-support",
+					 "Users": []
+         }
+       },
        "Release": {
          "Definition": "Development",
          "Name": "No release"
-       },
-       "Contact": {
-         "Name": "MyAppName",
-         "Business": {
-           "Place": "Paris, France",
-           "Url": "http://mysite.com/help"
-         },
-         "Technical": {
-           "Place": "Paris, France"
-         }
        }
      }
    }

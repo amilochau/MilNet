@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using MilNet.Core;
-using MilNet.Services.AspNetCore.Configuration;
-using MilNet.Services.AspNetCore.Services;
-using MilNet.Services.AspNetCore.Services.Abstractions;
+using MilNet.Services.Models;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -31,7 +29,6 @@ namespace Microsoft.Extensions.DependencyInjection
             // Core services
             builder.Services.AddHttpClient();
             builder.Services.AddRequestProvider();
-            builder.Services.AddTransient<ITokenService, TokenService<TOptions>>();
 
             return builder;
         }
