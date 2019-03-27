@@ -57,7 +57,6 @@ If you want to propose code source changes, please follow the steps below.
    public void ConfigureServices(IServiceCollection services)
    {
        services.AddMilNetServices(configuration.GetSection("Services");
-       
        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
    }
    ```
@@ -66,7 +65,6 @@ If you want to propose code source changes, please follow the steps below.
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
    {
        app.UseMilNetServices();
-       
        app.UseMvcWithDefaultRoute();
    }
    ```
@@ -84,28 +82,28 @@ If you want to propose code source changes, please follow the steps below.
      "AllowedHosts": "*",
      "Services": {
        "ApplicationName": "MyAppName",
-			 "Log": {
-			     "ElasticSearchUrl": "http://localhost:9200"
-			 },
+       "Log": {
+         "ElasticSearchUrl": "http://localhost:9200"
+       },
        "Contact": {
          "Business": {
-				   "Email": "business-support@mysite.com",
+           "Email": "business-support@mysite.com",
            "Place": "Paris, France",
            "Url": "http://mysite.com/business-support",
-					 "Users": [
-					     {
-					         "FirstName": "Antoine",
-							     "LastName": "Milochau"
-					         "Email": "antoine.milochau@mysite.com",
-							     "Place": "Paris, France"
-							 }
-					 ]
+           "Users": [
+             {
+               "FirstName": "Antoine",
+               "LastName": "Milochau",
+               "Email": "antoine.milochau@mysite.com",
+               "Place": "Paris, France"
+             }
+           ]
          },
          "Technical": {
-				   "Email": "technical-support@mysite.com",
+           "Email": "technical-support@mysite.com",
            "Place": "Paris, France",
            "Url": "http://mysite.com/technical-support",
-					 "Users": []
+           "Users": []
          }
        },
        "Release": {
