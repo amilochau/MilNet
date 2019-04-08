@@ -16,6 +16,8 @@ namespace Microsoft.AspNetCore.Builder
             where TOptions : ServicesOptions, new()
         {
             var options = app.ApplicationServices.GetService<IOptions<TOptions>>()?.Value ?? new TOptions();
+            var documentation = options.Documentation ?? new DocumentationOptions();
+            var version = documentation.Version ?? "v1";
 
             app.UseApplicationExceptionHandlerMiddleware();
             app.UseCors("AllowAll");
@@ -32,7 +34,7 @@ namespace Microsoft.AspNetCore.Builder
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{options.ApplicationName} API V1");
+                c.SwaggerEndpoint($"/swagger/{version}/swagger.json", $"{options.ApplicationName} API {version}");
             });
 
             return app;
