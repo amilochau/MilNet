@@ -7,10 +7,10 @@
 
         public virtual LogOptions Log { get; set; } = new LogOptions();
 
-        /// <summary>Contact information</summary>
         public virtual ContactOptions Contact { get; set; } = new ContactOptions();
 
-        /// <summary>Release information</summary>
         public virtual ReleaseOptions Release { get; set; } = new ReleaseOptions();
+
+        public virtual DocumentationOptions Documentation { get; set; } = new DocumentationOptions();
     }
 }

@@ -1,5 +1,4 @@
-﻿using MilNet.Services.AspNetCore.Configuration;
-using MilNet.Services.Models;
+﻿using MilNet.Services.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Collections.Generic;
 
@@ -22,6 +21,8 @@ namespace Microsoft.Extensions.DependencyInjection
             where TOptions : ServicesOptions, new()
         {
             var applicationName = builder.Options.ApplicationName;
+            var documentation = builder.Options.Documentation ?? new DocumentationOptions();
+            var version = documentation.Version ?? "v1";
             var contact = new Contact
             {
                 Email = builder.Options.Contact?.Technical?.Email
@@ -29,26 +30,51 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.Services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info
+                // Main information
+                c.SwaggerDoc(version, new Info
                 {
                     Title = $"{applicationName} API",
-                    Version = "v1",
+                    Version = version,
                     Description = $"All public API proposed by {applicationName} application",
                     Contact = contact
                 });
 
-                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                // Security
+                if (documentation.EnableSecurity)
                 {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
-                    Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
-                });
+                    c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                    {
+                        Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
+                        Name = "Authorization",
+                        In = "header",
+                        Type = "apiKey"
+                    });
 
-                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>()
+                    c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>()
+                    {
+                        { "Bearer", new string[]{ } }
+                    });
+                }
+
+                // XML comments file
+                if (!string.IsNullOrEmpty(documentation.XmlCommentsFilePath))
                 {
-                    { "Bearer", new string[]{ } }
-                });
+                    c.IncludeXmlComments(documentation.XmlCommentsFilePath);
+                }
+
+                // Formatting
+                if (documentation.DescribeAllEnumsAsStrings)
+                {
+                    c.DescribeAllEnumsAsStrings();
+                }
+                if (documentation.DescribeAllParametersInCamelCase)
+                {
+                    c.DescribeAllParametersInCamelCase();
+                }
+                if (documentation.DescribeStringEnumsInCamelCase)
+                {
+                    c.DescribeStringEnumsInCamelCase();
+                }
             });
 
             return builder;
