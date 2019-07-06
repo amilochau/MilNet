@@ -75,6 +75,10 @@ namespace Microsoft.Extensions.DependencyInjection
                 {
                     c.DescribeStringEnumsInCamelCase();
                 }
+                if (documentation.UseFullNameAsCustomSchemaIds)
+                {
+                    c.CustomSchemaIds(x => x.FullName);
+                }
             });
 
             return builder;
