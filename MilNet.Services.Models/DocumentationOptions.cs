@@ -12,5 +12,6 @@ namespace MilNet.Services.Models
         public bool DescribeAllEnumsAsStrings { get; set; }
         public bool DescribeAllParametersInCamelCase { get; set; }
         public bool DescribeStringEnumsInCamelCase { get; set; }
+        public bool UseFullNameAsCustomSchemaIds { get; set; }
     }
 }
